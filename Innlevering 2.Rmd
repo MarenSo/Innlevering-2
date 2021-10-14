@@ -9,55 +9,123 @@ csl: apa-no-ampersand
 lang: no-NB
 fontsize: 12pt
 output:
+  pdf_document: default
+  html_notebook: default
   html_document:
     df_print: paged
-  html_notebook: default
-  pdf_document: default
   word_document: default
 ---
 
++```{r setup, echo = FALSE}
+library(modelr)
+library(ggplot2)
+library(knitr)
+library(tinytex)
+library(tidyverse)
+library(ggpubr)
+```
 
 ```{r}
-attach(heights)
+data('heights', package ='modelr', eval == FALSE)
 ```
+
 
 # Er det høyde som bestemmer inntekt?
 
 - Kort innledning
 
+
+
 - ca 1 side litteraturgjennomgang 
 
 - Start analyse med å lage din egen versjon av datasettet. Kall det for hoyde og jobb med dette.
-```{r}
-data('heights', package ='modelr', eval == FALSE)
+
+```{r oversikt, echo=FALSE}
+heights$inntekt <- heights$income*9
+heights$height_cm <- heights$height*2.54
+heights$height_cmInt <- cut(heights$height_cm, 
+breaks = 8)
+kable(head(heights[, 1:4]), "rst")
 ```
 
 - Beskrivende statistikk, dvs. kort beskrivelse av dataene•EDA (vha. ggplot) av datasettet.
 
+
+
+
+
 - Lag et histogram av variabelen income–Hva er forklaring på utliggerne langt til høyre? (se help for datasettet)
+
+
+
+
 
 - Har vi med personer uten inntekt i datasettet?
 
+
+
+
+
 - Regresjonsanalyse (dokumentetLiten introduksjon til å kjøre regresjonsanalyser i Rkan være til hjelp)
+
+
+
+
 
 – Vi benytter hele datasettet, men vil kjøre endelig modell også mot reduserte datasett (uten 2%topp inntekt og uten inntekt 0) for å teste modellens robusthet (huskfilterfunksjonen fraTidyverse)–Lag to nye variabler height_cm og weight_kg ( vha. mutate()) der du konverterer variableneheight (inch) og weight (pound) til metrisk standard.
 
+
+
+
+
 – Lag også en ny variabel bmi (der bmi=vekt i kg/(høyde i cm)ˆ2).–Lag en forenklet utgave av variabelen marital, dvs. married not-married. Kan enkelt gjøres vha.
+
+
+
+
+
 
 Totalt skal minst 6 modeller estimeres
 
+
+
+
+
 - Resultatet fra estimeringen skal rapporteres vha. huxreg(). Se dokumentet ex_reg_tables.pdf underFiler > Assignment 2 på Canvas, hvis du har glemt hvordan det gjøres. Tips: angir du en liste somførste argument til huxreg() kan du styre hva modellene skal hete, f.eks (gir også t-verdier istedenforstandard error)
+
+
+
+
 
 - Den endelige modellen skal testes for robusthet på et datasett uten de 2% høyeste inntektene og på etdatasett som i tillegg ikke inneholder observasjoner der inntekten er 0.
 
+
+
+
+
 - Disse modellene på redusert datasett teller med blant de 6.Minst en av modellene skal inneholde interaksjon mht. variabelen sex. (Se eksempel 7.10 i dokumentetLiten intro)](https://elastic-turing-41462a.netlify.app/presentations_ag/intro_econometrics/w_4c1_and_4c3)))
+
+
+
 
 - Det skal gjøres test av koeffisientene vha. linearHypothesis() fra car pakken
 
+
+
+
 - Residualene fra endelig modell skal legges til datasettet hoyde. height_cm skal plottes mot residualenefor ‘facet_grid(sex ~ factor(married, labels = c(“not married,” “married”)))‘
+
+
+
 
 - Plot av samtlige observasjoner svakt i bakgrunnen kan en få til med
 
+
+
+
 - Konklusjon Svar på spørsmålet: Er det høyde som bestemmer inntekt?
+
+
+
 
 - Referanser
