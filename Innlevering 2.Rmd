@@ -1,0 +1,17 @@
+---
+title: "Innlevering 2"
+author: Innlevering 2 i Data Science 2021 - Maren Sognefest og Daniel Karstad
+Affiliation: HVL
+email: 152148@stud.hvl.no & 598289@stud.hvl.no
+bibliography: 
+nocite: 
+csl: apa-no-ampersand
+lang: no-NB
+fontsize: 12pt
+output:
+  html_document:
+    df_print: paged
+  html_notebook: default
+  pdf_document: default
+  word_document: default
+---
