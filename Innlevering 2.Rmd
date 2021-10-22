@@ -5,7 +5,6 @@ Affiliation: HVL
 email: 152148@stud.hvl.no & 598289@stud.hvl.no
 bibliography: 
 nocite: 
-csl: apa-no-ampersand
 lang: no-NB
 fontsize: 12pt
 output:
@@ -16,116 +15,85 @@ output:
   word_document: default
 ---
 
-+```{r setup, echo = FALSE}
-library(modelr)
-library(ggplot2)
-library(knitr)
-library(tinytex)
-library(tidyverse)
-library(ggpubr)
-```
+\+`{r setup, echo = FALSE} library(modelr) library(ggplot2) library(knitr) library(tinytex) library(tidyverse) library(ggpubr)`
 
 ```{r}
-data('heights', package ='modelr', eval == FALSE)
+data('heights', package ='modelr')
 ```
-
 
 # Er det høyde som bestemmer inntekt?
 
-- Kort innledning
+-   Kort innledning
 
+-   ca 1 side litteraturgjennomgang
 
+-   Start analyse med å lage din egen versjon av datasettet. Kall det for hoyde og jobb med dette.
 
-- ca 1 side litteraturgjennomgang 
-
-- Start analyse med å lage din egen versjon av datasettet. Kall det for hoyde og jobb med dette.
-
-```{r oversikt, echo=FALSE}
-heights$inntekt <- heights$income*9
-heights$height_cm <- heights$height*2.54
-heights$height_cmInt <- cut(heights$height_cm, 
-breaks = 8)
-kable(head(heights[, 1:4]), "rst")
+```{r}
+heights$inntekt_nok <- heights$income*8.5
+heights$hoyde_cm <- heights$height*2.54
+heights$vekt_kg <- heights$weight/2.2
 ```
 
-- Beskrivende statistikk, dvs. kort beskrivelse av dataene•EDA (vha. ggplot) av datasettet.
+```{r heights echo=FALSE}
+heights$height_cmInt <- NULL
+heights$weight <- NULL
+heights$height <- NULL
+heights$height_cmInt <-NULL
+heights$income <- NULL
+
+knitr::kable(summary(heights[1:8]), "pipe")
+
+```
+
+-   Beskrivende statistikk, dvs. kort beskrivelse av dataen
+
+Her er sammendraget over statistikken vår. Man har kolonner med alder, sivilstatus, kjønn, antall år utdannelse, percentil score på Armed Forces Qualification Test, inntekt i NOK, høyde i cm og vekt i kg. Vi har fjernet høyde, vekt og inntekt i andre verdier.
+
+# EDA (vha. ggplot) av datasettet.
+
+```{r}
+library(ggplot2) #data visualization
+library(dplyr) #data manipulation
+library(ISLR) #for the dataset
+
+ggplot(data = heights, aes(x = inntekt_nok, y = hoyde_cm)) + geom_point()
+
+```
+
+```{r}
+qplot(heights$inntekt_nok, geom="histogram") 
+```
+
+Utliggerne til høyre er der fordi det er beregnet gjennomsnittsinntekt av de to prosentene med høyest inntekt. Dette gjennomsnittet er brukt, og har erstattet alle de øverste verdiene.
+
+Som man kan se utfra histogrammet er det med flere uten inntekt i datasettet. Det kan man også se slik:
+```{r}
+sum(heights$inntekt_nok == 0)
+```
+Det er altå 1740 personer uten inntekt med i datasettet.
 
 
+-   Regresjonsanalyse (dokumentetLiten introduksjon til å kjøre regresjonsanalyser i Rkan være til hjelp)
 
+-- Vi benytter hele datasettet, men vil kjøre endelig modell også mot reduserte datasett (uten 2%topp inntekt og uten inntekt 0) for å teste modellens robusthet (huskfilterfunksjonen fraTidyverse)--Lag to nye variabler height_cm og weight_kg ( vha. mutate()) der du konverterer variableneheight (inch) og weight (pound) til metrisk standard.
 
-
-- Lag et histogram av variabelen income–Hva er forklaring på utliggerne langt til høyre? (se help for datasettet)
-
-
-
-
-
-- Har vi med personer uten inntekt i datasettet?
-
-
-
-
-
-- Regresjonsanalyse (dokumentetLiten introduksjon til å kjøre regresjonsanalyser i Rkan være til hjelp)
-
-
-
-
-
-– Vi benytter hele datasettet, men vil kjøre endelig modell også mot reduserte datasett (uten 2%topp inntekt og uten inntekt 0) for å teste modellens robusthet (huskfilterfunksjonen fraTidyverse)–Lag to nye variabler height_cm og weight_kg ( vha. mutate()) der du konverterer variableneheight (inch) og weight (pound) til metrisk standard.
-
-
-
-
-
-– Lag også en ny variabel bmi (der bmi=vekt i kg/(høyde i cm)ˆ2).–Lag en forenklet utgave av variabelen marital, dvs. married not-married. Kan enkelt gjøres vha.
-
-
-
-
-
+-- Lag også en ny variabel bmi (der bmi=vekt i kg/(høyde i cm)ˆ2).--Lag en forenklet utgave av variabelen marital, dvs. married not-married. Kan enkelt gjøres vha.
 
 Totalt skal minst 6 modeller estimeres
 
+-   Resultatet fra estimeringen skal rapporteres vha. huxreg(). Se dokumentet ex_reg_tables.pdf underFiler \> Assignment 2 på Canvas, hvis du har glemt hvordan det gjøres. Tips: angir du en liste somførste argument til huxreg() kan du styre hva modellene skal hete, f.eks (gir også t-verdier istedenforstandard error)
 
+-   Den endelige modellen skal testes for robusthet på et datasett uten de 2% høyeste inntektene og på etdatasett som i tillegg ikke inneholder observasjoner der inntekten er 0.
 
+-   Disse modellene på redusert datasett teller med blant de 6.Minst en av modellene skal inneholde interaksjon mht. variabelen sex. (Se eksempel 7.10 i dokumentetLiten intro)](<https://elastic-turing-41462a.netlify.app/presentations_ag/intro_econometrics/w_4c1_and_4c3>)))
 
+-   Det skal gjøres test av koeffisientene vha. linearHypothesis() fra car pakken
 
-- Resultatet fra estimeringen skal rapporteres vha. huxreg(). Se dokumentet ex_reg_tables.pdf underFiler > Assignment 2 på Canvas, hvis du har glemt hvordan det gjøres. Tips: angir du en liste somførste argument til huxreg() kan du styre hva modellene skal hete, f.eks (gir også t-verdier istedenforstandard error)
+-   Residualene fra endelig modell skal legges til datasettet hoyde. height_cm skal plottes mot residualenefor 'facet_grid(sex \~ factor(married, labels = c("not married," "married")))'
 
+-   Plot av samtlige observasjoner svakt i bakgrunnen kan en få til med
 
+-   Konklusjon Svar på spørsmålet: Er det høyde som bestemmer inntekt?
 
-
-
-- Den endelige modellen skal testes for robusthet på et datasett uten de 2% høyeste inntektene og på etdatasett som i tillegg ikke inneholder observasjoner der inntekten er 0.
-
-
-
-
-
-- Disse modellene på redusert datasett teller med blant de 6.Minst en av modellene skal inneholde interaksjon mht. variabelen sex. (Se eksempel 7.10 i dokumentetLiten intro)](https://elastic-turing-41462a.netlify.app/presentations_ag/intro_econometrics/w_4c1_and_4c3)))
-
-
-
-
-- Det skal gjøres test av koeffisientene vha. linearHypothesis() fra car pakken
-
-
-
-
-- Residualene fra endelig modell skal legges til datasettet hoyde. height_cm skal plottes mot residualenefor ‘facet_grid(sex ~ factor(married, labels = c(“not married,” “married”)))‘
-
-
-
-
-- Plot av samtlige observasjoner svakt i bakgrunnen kan en få til med
-
-
-
-
-- Konklusjon Svar på spørsmålet: Er det høyde som bestemmer inntekt?
-
-
-
-
-- Referanser
+-   Referanser
