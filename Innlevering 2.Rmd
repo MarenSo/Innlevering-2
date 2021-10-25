@@ -1,54 +1,70 @@
 ---
-title: "Innlevering 2"
+title: Innlevering 2
 author: Innlevering 2 i Data Science 2021 - Maren Sognefest og Daniel Karstad
 Affiliation: HVL
 email: 152148@stud.hvl.no & 598289@stud.hvl.no
-bibliography: 
+bibliography: Innlevering2.bib
+bib-humanities: true
 nocite: 
 lang: no-NB
 fontsize: 12pt
+linestretch: 1.5
 output:
-  pdf_document: default
-  html_notebook: default
   html_document:
     df_print: paged
+  pdf_document: default
   word_document: default
+  html_notebook: default
 ---
 
-\+`{r setup, echo = FALSE} library(modelr) library(ggplot2) library(knitr) library(tinytex) library(tidyverse) library(ggpubr)`
-
 ```{r}
-data('heights', package ='modelr')
+echo = FALSE 
+library(modelr) 
+library(ggplot2) 
+library(knitr) 
+library(tinytex) 
+library(tidyverse) 
+library(ggpubr)
+data('heights', package = 'modelr')
+hoyde<-data.frame(heights) #kopi av datasettet "heights", kalt "hoyde"
+tracemem(hoyde)==tracemem(heights)
 ```
 
 # Er det høyde som bestemmer inntekt?
 
--   Kort innledning
+Denne artikkelen skal ta for seg om det er en, og eventuelt hvilken, sammenheng det er mellom høyde og inntekt. Ved hjelp av flere analyser, skal vi bruke datasettet **heights** fra pakken **modelr** skal vi prøve å finne ut om det er en sammenheng. Kan det stemme at høye personer tjener mest?
+
+I analyse-delen av artikkelen vil vi bruke ulike **plots** for å analysere spørsmålet, og komme frem til en konklusjon.
 
 -   ca 1 side litteraturgjennomgang
 
 -   Start analyse med å lage din egen versjon av datasettet. Kall det for hoyde og jobb med dette.
 
 ```{r}
-heights$inntekt_nok <- heights$income*8.5
-heights$hoyde_cm <- heights$height*2.54
-heights$vekt_kg <- heights$weight/2.2
-```
-
-```{r heights echo=FALSE}
-heights$height_cmInt <- NULL
-heights$weight <- NULL
-heights$height <- NULL
-heights$height_cmInt <-NULL
-heights$income <- NULL
-
 knitr::kable(summary(heights[1:8]), "pipe")
-
 ```
 
 -   Beskrivende statistikk, dvs. kort beskrivelse av dataen
 
-Her er sammendraget over statistikken vår. Man har kolonner med alder, sivilstatus, kjønn, antall år utdannelse, percentil score på Armed Forces Qualification Test, inntekt i NOK, høyde i cm og vekt i kg. Vi har fjernet høyde, vekt og inntekt i andre verdier.
+Her er sammendraget over statistikken vår. Man har kolonner med inntekt i dollar, høyde i inches, vekt i pounds, alder, sivilstatus, kjønn, utdannelse og score på Armed Forces Qualitication Test. 
+Under er sammendraget av vårt modifiserte datasett. Her har vi gjort dataen til europeiske standarderer; vi bruker høyde i cm og vekt i kg, i tillegg til at inntekten er i norske kroner. Vi har også lagt til bmi. 
+
+```{r}
+hoyde$hoyde_cm <- hoyde$height*2.54
+hoyde$inntekt_nok <- hoyde$income*8.5
+hoyde$vekt_kg <- hoyde$weight/2.2
+hoyde$bmi <- hoyde$vekt_kg/(hoyde$hoyde_cm/100)/(hoyde$hoyde_cm/100)
+```
+
+```{r echo = TRUE}
+hoyde$height_cmInt <- NULL
+hoyde$weight <- NULL
+hoyde$height <- NULL
+hoyde$income <- NULL
+
+knitr::kable(summary(hoyde[1:9]), "pipe")
+
+```
 
 # EDA (vha. ggplot) av datasettet.
 
@@ -57,26 +73,33 @@ library(ggplot2) #data visualization
 library(dplyr) #data manipulation
 library(ISLR) #for the dataset
 
-ggplot(data = heights, aes(x = inntekt_nok, y = hoyde_cm)) + geom_point()
+ggplot(data = hoyde, aes(x = inntekt_nok, y = hoyde_cm)) + geom_point()
 
 ```
 
 ```{r}
-qplot(heights$inntekt_nok, geom="histogram") 
+qplot(hoyde$inntekt_nok, geom="histogram") 
 ```
 
 Utliggerne til høyre er der fordi det er beregnet gjennomsnittsinntekt av de to prosentene med høyest inntekt. Dette gjennomsnittet er brukt, og har erstattet alle de øverste verdiene.
 
 Som man kan se utfra histogrammet er det med flere uten inntekt i datasettet. Det kan man også se slik:
-```{r}
-sum(heights$inntekt_nok == 0)
-```
-Det er altå 1740 personer uten inntekt med i datasettet.
 
+```{r}
+sum(hoyde$inntekt_nok == 0)
+```
+
+Det er altå 1740 personer uten inntekt med i datasettet.
 
 -   Regresjonsanalyse (dokumentetLiten introduksjon til å kjøre regresjonsanalyser i Rkan være til hjelp)
 
--- Vi benytter hele datasettet, men vil kjøre endelig modell også mot reduserte datasett (uten 2%topp inntekt og uten inntekt 0) for å teste modellens robusthet (huskfilterfunksjonen fraTidyverse)--Lag to nye variabler height_cm og weight_kg ( vha. mutate()) der du konverterer variableneheight (inch) og weight (pound) til metrisk standard.
+```{r eval = FALSE}
+x <- hoyde$hoyde_cm
+y <- hoyde$inntekt_nok
+```
+
+-- Vi benytter hele datasettet, men vil kjøre endelig modell også mot reduserte datasett (uten 2% topp inntekt og uten inntekt 0) for å teste modellens robusthet (huskfilterfunksjonen fraTidyverse)--L
+ag to nye variabler height_cm og weight_kg ( vha. mutate()) der du konverterer variableneheight (inch) og weight (pound) til metrisk standard.
 
 -- Lag også en ny variabel bmi (der bmi=vekt i kg/(høyde i cm)ˆ2).--Lag en forenklet utgave av variabelen marital, dvs. married not-married. Kan enkelt gjøres vha.
 
@@ -96,4 +119,9 @@ Totalt skal minst 6 modeller estimeres
 
 -   Konklusjon Svar på spørsmålet: Er det høyde som bestemmer inntekt?
 
--   Referanser
+# Referanser
+
+::: 
+{#refs}
+:::
+
