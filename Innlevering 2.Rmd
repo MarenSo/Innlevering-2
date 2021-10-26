@@ -107,7 +107,7 @@ geom_smooth(formula = y ~ x, method = "lm")
 library(dplyr)
 options(scipen = 999) #disabling scientific notation in R. vet ikke om vi skal ha med denne
 hoyde = filter(hoyde, inntekt_nok != 0, inntekt_nok != "2922555") #brukt filter til å fjerne alle med inntekt = 0 og 2922555 (2% med høyest lønn)
-ggplot(hoyde, aes(inntekt_nok, hoyde_cm)) +
+ggplot(hoyde, aes(hoyde_cm, inntekt_nok)) +
   geom_point() +
 geom_smooth(formula = y ~ x, method = "lm")
 ggplot(hoyde,aes(hoyde_cm))+geom_histogram(bins=20)
