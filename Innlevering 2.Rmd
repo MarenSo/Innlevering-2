@@ -100,6 +100,14 @@ sum(hoyde$inntekt_nok == 0)
 Det er altå 1740 personer uten inntekt med i datasettet.
 
 **Vi må ha regresjonsanalyse (dokumentetLiten introduksjon til å kjøre regresjonsanalyser i Rkan være til hjelp)**
+
+```{r eval=TRUE}
+Inntekt <- hoyde$inntekt_nok
+ggplot(hoyde = Inntekt) + theme_dark() +
+  geom_density(aes(x = Inntekt), fill = "blue")
+```
+
+
 ```{r eval=TRUE}
 Høyde <- hoyde$hoyde_cm
 Inntekt <- hoyde$inntekt_nok
