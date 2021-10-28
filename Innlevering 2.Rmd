@@ -10,9 +10,9 @@ lang: no-NB
 fontsize: 12pt
 linestretch: 1.5
 output:
+  pdf_document: default
   html_document:
     df_print: paged
-  pdf_document: default
   word_document: default
   html_notebook: default
 ---
@@ -76,10 +76,17 @@ ggplot(data = hoyde, aes(x = inntekt_nok, y = hoyde_cm)) + geom_point()
 ```
 
 ```{r echo=FALSE}
+#hoyde <-   heights %>%
 x <- hoyde$hoyde_cm
 y <- hoyde$inntekt_nok
-ggplot(hoyde,aes(x))+geom_histogram(bins=20)
-
+#ggplot(hoyde,aes(x))+geom_histogram(bins=20)
+height_cm <- heights$height_cm
+hist(x, 
+     breaks = 18,
+     main = "Høyde i centimeter",
+     ylab = "Frekvens",
+     xlab = "Centimeter",
+     col = "blue")
 ```
 
 Utliggerne til høyre er der fordi det er beregnet gjennomsnittsinntekt av de to prosentene med høyest inntekt. Dette gjennomsnittet er brukt, og har erstattet alle de øverste verdiene.
@@ -95,12 +102,12 @@ Det er altå 1740 personer uten inntekt med i datasettet.
 **Vi må ha regresjonsanalyse (dokumentetLiten introduksjon til å kjøre regresjonsanalyser i Rkan være til hjelp)**
 
 ```{r eval=TRUE}
-options(scipen = 999) #disabling scientific notation in R. vet ikke om vi skal ha med denne
-x <- hoyde$hoyde_cm
-y <- hoyde$inntekt_nok
-ggplot(hoyde, aes(x, y)) +
-  geom_point() +
-geom_smooth(formula = y ~ x, method = "lm")
+#options(scipen = 999) #disabling scientific notation in R. vet ikke om vi skal ha med denne
+Høyde <- hoyde$hoyde_cm
+Inntekt <- hoyde$inntekt_nok
+ggplot(hoyde, aes(Høyde, Inntekt)) +  theme_dark() +
+  geom_point(color= "blue", size = 0.5) +
+geom_smooth(formula = y ~ x, method = "lm", color= "orange")
 ```
 
 ```{r redusert datasett}
