@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2022/dev) (preloaded format=pdflatex 2021.10.28)  28 OCT 2021 19:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2022/dev) (preloaded format=pdflatex 2021.10.28)  28 OCT 2021 20:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -718,54 +718,54 @@ File: Innlevering-2_files/figure-latex/unnamed-chunk-5-1.pdf Graphic file (type
 Package pdftex.def Info: Innlevering-2_files/figure-latex/unnamed-chunk-5-1.pdf
   used on input line 287.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[4 <./Innlevering-2_files/figure-latex/unnamed-chunk-4-1.pdf>] [5 <./Innleverin
-g-2_files/figure-latex/unnamed-chunk-5-1.pdf>]
-<Innlevering-2_files/figure-latex/unnamed-chunk-7-1.pdf, id=62, 469.755pt x 325
+[4 <./Innlevering-2_files/figure-latex/unnamed-chunk-4-1.pdf>]
+<Innlevering-2_files/figure-latex/unnamed-chunk-7-1.pdf, id=52, 469.755pt x 325
 .215pt>
 File: Innlevering-2_files/figure-latex/unnamed-chunk-7-1.pdf Graphic file (type
  pdf)
 <use Innlevering-2_files/figure-latex/unnamed-chunk-7-1.pdf>
 Package pdftex.def Info: Innlevering-2_files/figure-latex/unnamed-chunk-7-1.pdf
-  used on input line 316.
+  used on input line 313.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-<Innlevering-2_files/figure-latex/redusert datasett-1.pdf, id=63, 469.755pt x 3
+[5 <./Innlevering-2_files/figure-latex/unnamed-chunk-5-1.pdf>]
+<Innlevering-2_files/figure-latex/unnamed-chunk-8-1.pdf, id=63, 469.755pt x 325
+.215pt>
+File: Innlevering-2_files/figure-latex/unnamed-chunk-8-1.pdf Graphic file (type
+ pdf)
+<use Innlevering-2_files/figure-latex/unnamed-chunk-8-1.pdf>
+Package pdftex.def Info: Innlevering-2_files/figure-latex/unnamed-chunk-8-1.pdf
+  used on input line 329.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+[6 <./Innlevering-2_files/figure-latex/unnamed-chunk-7-1.pdf>] [7 <./Innleverin
+g-2_files/figure-latex/unnamed-chunk-8-1.pdf>]
+<Innlevering-2_files/figure-latex/redusert datasett-1.pdf, id=86, 469.755pt x 3
 25.215pt>
 File: Innlevering-2_files/figure-latex/redusert datasett-1.pdf Graphic file (ty
 pe pdf)
 <use Innlevering-2_files/figure-latex/redusert datasett-1.pdf>
 Package pdftex.def Info: Innlevering-2_files/figure-latex/redusert datasett-1.p
-df  used on input line 329.
+df  used on input line 352.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[6 <./Innlevering-2_files/figure-latex/unnamed-chunk-7-1.pdf>]
-<Innlevering-2_files/figure-latex/redusert datasett-2.pdf, id=76, 469.755pt x 3
-25.215pt>
-File: Innlevering-2_files/figure-latex/redusert datasett-2.pdf Graphic file (ty
-pe pdf)
-<use Innlevering-2_files/figure-latex/redusert datasett-2.pdf>
-Package pdftex.def Info: Innlevering-2_files/figure-latex/redusert datasett-2.p
-df  used on input line 337.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[7 <./Innlevering-2_files/figure-latex/redusert datasett-1.pdf>]
+[8 <./Innlevering-2_files/figure-latex/redusert datasett-1.pdf>]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 358.
+(Font)              <12> on input line 373.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 358.
+(Font)              <8> on input line 373.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 358.
+(Font)              <6> on input line 373.
 
-Underfull \hbox (badness 10000) in paragraph at lines 358--359
+Underfull \hbox (badness 10000) in paragraph at lines 373--374
 \T1/lmr/bx/n/12 mentetLiten in-tro)]([]$https : / / elastic -[] turing -[] 4146
 2a . netlify . app / presentations _
  []
 
-[8 <./Innlevering-2_files/figure-latex/redusert datasett-2.pdf>] [9] (./Innleve
-ring-2.aux)
+[9] (./Innlevering-2.aux)
 Package rerunfilecheck Info: File `Innlevering-2.out' has not changed.
 (rerunfilecheck)             Checksum: A421BF8413F85F8FA134F5292581A05D;553.
  ) 
 Here is how much of TeX's memory you used:
  12279 strings out of 480539
- 184405 string characters out of 5901303
+ 184389 string characters out of 5901303
  518510 words of memory out of 5000000
  29680 multiletter control sequences out of 15000+600000
  451266 words of font info for 69 fonts, out of 8000000 for 9000
@@ -780,10 +780,10 @@ r17.pfb></Users/danielkarstad/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/
 lmri12.pfb></Users/danielkarstad/Library/TinyTeX/texmf-dist/fonts/type1/public/
 lm/lmtt12.pfb></Users/danielkarstad/Library/TinyTeX/texmf-dist/fonts/type1/publ
 ic/lm/lmtti10.pfb>
-Output written on Innlevering-2.pdf (9 pages, 945200 bytes).
+Output written on Innlevering-2.pdf (9 pages, 699598 bytes).
 PDF statistics:
- 145 PDF objects out of 1000 (max. 8388607)
- 109 compressed objects within 2 object streams
+ 142 PDF objects out of 1000 (max. 8388607)
+ 106 compressed objects within 2 object streams
  19 named destinations out of 1000 (max. 500000)
  50 words of extra memory for PDF output out of 10000 (max. 10000000)
 
