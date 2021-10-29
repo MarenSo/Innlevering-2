@@ -24,6 +24,7 @@ library(knitr)
 library(tinytex) 
 library(tidyverse) 
 library(ggpubr)
+library(dplyr)
 data('heights', package = 'modelr')
 ```
 
@@ -35,17 +36,16 @@ I analyse-delen av artikkelen vil vi bruke ulike **plots** for å analysere spø
 
 ## Litteraturgjennomgang
 
-I 2004 skrev Judge og Cabel en artikkel som omhandlet hvorvidt høyde bestemmer inntekt. De nevner at utsagnet «høyde påvirker inntekten» kanskje er mer sant enn man først skulle tro. Tidligere studier har vist at høye mennesker fremstår som mer overbevisende (Young & French, 1996), mer attraktive som partnere (Freedman, 1979; Harrison & Saeed, 1977; Lerner & Moore, 1974) og fremstår mer naturlig som en lederskikkelse (Higham & Carment, 1992; Stogdill, 1948). Bakgrunnen for dette kan ligge i biologien vår og i evolusjonsteorien. I dyreverden brukes nemlig høyde som et mål på styrke i en risikovurdering i en fight-or-flight-situasjon.
+At høyde har påvirkning på karrieresuksess er ingen ny tanke, men det er gjort få studier på dette området. En av de viktigste indikatorene for suksess i arbeidslivet er lønn, og i 2004 skrev Judge og Cabel en artikkel som omhandlet hvorvidt høyde bestemmer inntekt. De nevner at utsagnet «høyde påvirker inntekten» kanskje er mer sant enn man først skulle tro. Tidligere studier har vist at høye mennesker fremstår som mer overbevisende (Young & French, 1996), mer attraktive som partnere (Freedman, 1979; Harrison & Saeed, 1977; Lerner & Moore, 1974) og fremstår mer naturlig som en lederskikkelse (Higham & Carment, 1992; Stogdill, 1948). Bakgrunnen for dette kan ligge i biologien vår og i evolusjonsteorien. I dyreverden brukes nemlig høyde som et mål på styrke i en risikovurdering i en fight-or-flight-situasjon.
 
-Videre i artikkelen inkluderer de fire forskjellige studier. I tillegg til de to åpenbare variablene i studien (høyde og inntket), inkluderte de tre kontrollvariabler; kjønn, alder og vekt.
+Det nevnes at høyde kan gi mennesker bedre selvillit og bedre sosial selvtillit, noe som i seg selv kan være en faktor for å yte bedre - og følgelig ha høyere inntekt. Videre i artikkelen inkluderer de fire forskjellige studier. I tillegg til de to åpenbare variablene i studien (høyde og inntket), inkluderte de tre kontrollvariabler; kjønn, alder og vekt.
 
 Fordi menn generelt er høyere enn kvinner, og at det er kjent at menn tjener bedre enn kvinner kan dette være med på å påvirke resultatet av studiene. Alder er relevant, fordi et gjennomsnittsenneske vil "krympe" 5 cm i høyde i løpet av livet sitt. Vekt henger naturligvis sammen med høyde, men de kan dra i ulike retninger. Det er i følge Judge og Cabel flere grunner til å tro at høyde har positiv innvirkning, kan vekt ha det motsatte.
 
 For å gjøre resultatene så generaliserbare som mulig, ble sammenhengen mellom høyde og inntekt sett på gjennom fire unike prøver. Dataene er begrenset til enkeltpersoner som jobber minst 20 timer i snitt ukentlig, med unntak av studie 3 hvor dataene i analysen er begrenset til å kun omhandle personer som var hovedinntektskilden i husholdningen.
 
-Dataene til de fire studiene, ble hentet inn fra fire ulike kilder - en for hvert studie.
+Dataene til de fire studiene, ble hentet inn fra fire ulike kilder - en for hvert studie. Judge og Cabel konkluderte med at det er sammenheng mellom en persons høyde og inntekt, noe som har vært diskutert i ettertid. Det er dette vi skal se på nå, ved bruk av et helt annet datasett enn det som ble brukt i 2004 @Judge2004.
 
-<http://ww.w.timothy-judge.com/Height%20paper--JAP%20published.pdf> (dette er egentlig vår eneste kilde)
 
 ## Datasett
 
@@ -120,9 +120,8 @@ Vi fjerner de mest ekstreme; utliggerne til høyre (2% høyeste lønninger) og u
 
 ```{r redusert datasett}
 library(dplyr)
-options(scipen = 999) #disabling scientific notation in R. vet ikke om vi skal ha med denne
-hoyde_filter = filter(hoyde, inntekt_nok != 0, inntekt_nok != "2922555") #brukt filter til å fjerne alle med inntekt = 0 og 2922555 (2% med høyest lønn)
-
+options(scipen = 999) 
+hoyde_filter = filter(hoyde, inntekt_nok != 0, inntekt_nok != "2922555")
 Høyde <- hoyde_filter$hoyde_cm
 Inntekt <- hoyde_filter$inntekt_nok
 ggplot(hoyde_filter, aes(Inntekt, Høyde)) +  theme_dark() +
@@ -136,7 +135,6 @@ ggplot(data = hoyde_filter,
 ```
 
 ```{r eval=TRUE}
-#options(scipen = 999) #disabling scientific notation in R. vet ikke om vi skal ha med denne
 
 Inntekt <- hoyde$inntekt_nok
 ggplot(hoyde = Inntekt) + theme_dark() +
@@ -146,7 +144,6 @@ ggplot(hoyde = Inntekt) + theme_dark() +
 Grafen over illustrerer inntekt, og her ser man ved første øyekast at det ikke er normalfordelt. Dette fordi man har mange observasjoner tilnærmet 0, og hovedvekten er \<500,000.00 NOK. I andre enden av skalaen, de med 2% høyest inntekt er illustrert ved et gjennomsnitt av lønnen. Derfor foreligger det ingen observasjoner mellom 1,600,000.00 NOK og 3,000,000.00 NOK.
 
 ```{r eval=TRUE}
-#options(scipen = 999) #disabling scientific notation in R. vet ikke om vi skal ha med denne
 
 Høyde <- hoyde$hoyde_cm
 Inntekt <- hoyde$inntekt_nok
@@ -170,12 +167,9 @@ max(hoyde$inntekt_nok)
 
 Gjennomsnittet som er målt av de 2% med høyest lønn, er kroner 292 2555.
 
-### Analyse med 2-variabler
-
 I denne delen av oppgaven ser vi på variablene inntekt og høyde hver for seg. For å undersøke om det finnes noe sammenheng mellom disse, må vi putte de 2 variablene inn i samme plot.
 
 ```{r eval=TRUE}
-#options(scipen = 999) #disabling scientific notation in R. vet ikke om vi skal ha med denne
 
 Inntekt <- hoyde$inntekt_nok
 ggplot(hoyde = Inntekt) + theme_dark() +
@@ -185,7 +179,6 @@ ggplot(hoyde = Inntekt) + theme_dark() +
 Denne grafen illustrerer inntekt, og her ser man ved første øyekast at det ikke er normalfordelt. Dette fordi man har mange observasjoner tilnærmet 0, og hovedvekten er \<500,000.00 NOK. I andre enden av skalaen, de med 2% høyest inntekt er illustrert ved et gjennomsnitt av lønnen. Derfor foreligger det ingen observasjoner mellom 1,600,000.00 NOK og 3,000,000.00 NOK.
 
 ```{r eval=TRUE}
-#options(scipen = 999) #disabling scientific notation in R. vet ikke om vi skal ha med denne
 
 Høyde <- hoyde$hoyde_cm
 Inntekt <- hoyde$inntekt_nok
@@ -201,8 +194,7 @@ Vi fjerner de mest ekstreme; utliggerne til høyre (2% høyeste lønninger) og u
 
 ```{r redusert datasett}
 library(dplyr)
-options(scipen = 999) #disabling scientific notation in R. vet ikke om vi skal ha med denne
-hoyde_filter = filter(hoyde, inntekt_nok != 0, inntekt_nok != "2922555") #brukt filter til å fjerne alle med inntekt = 0 og 2922555 (2% med høyest lønn)
+hoyde_filter = filter(hoyde, inntekt_nok != 0, inntekt_nok != "2922555") 
 
 Høyde <- hoyde_filter$hoyde_cm
 Inntekt <- hoyde_filter$inntekt_nok
@@ -219,7 +211,6 @@ ggplot(data = hoyde_filter,
 # Regresjonsanalyse
 
 ```{r eval=TRUE}
-#options(scipen = 999) #disabling scientific notation in R. vet ikke om vi skal ha med denne
 Høyde <- hoyde$hoyde_cm
 Inntekt <- hoyde$inntekt_nok
 ggplot(hoyde, aes(Høyde, Inntekt)) +  theme_dark() +
@@ -246,13 +237,23 @@ Tar man bort alle som tjener 0 kroner, og de 2% som har høyest inntekt, vil vi 
 Vi skal også gjøre denne analysen av et datasett kun uten de 2% øverste inntektene, altså inkluderer vi de med inntekt på 0 kr:
 
 ```{r Semiredusert datasett}
-hoyde_semi= filter(hoyde, inntekt_nok != "2922555") #brukt filter til å fjerne alle med inntekt = 2922555 (2% med høyest lønn)
+hoyde_semi= filter(hoyde, inntekt_nok != "2922555") 
 
 (lm(inntekt_nok ~ hoyde_cm, data = hoyde_semi)) %>%
   summary()
 ```
 
 Dersom vi kun fjerner de 2 prosentene med høyest lønn, vil 1 cm økning i høyde gi 5828,4 kroner økt årlig inntekt.
+
+```{r regresjon med flere variabler}
+summary(model)
+model <- lm(inntekt_nok ~ hoyde_cm + education + sex, data = hoyde_filter)
+summary(model)
+```
+
+Inntekt = -385.258 + 1.341 * høyde + 45.968 * utdannelse (- 130.227 om du er kvinne).
+R2 er 0,2209, altså kan 22,09% av variasjonen i inntekt forklares av variablene høyde, utdannelse og kjønn.
+
 
 # Huxreg
 
@@ -282,28 +283,41 @@ Som vi kan lese utfra tabellen har populasjonen i datasettet gått fra 6911 til 
 
 De viktigste variablene i vårt datasett har vært høyde (*hoyde_cm*) og inntekt (*inntekt_nok*). Utfra tabellen kan vi se at ved alle dataene inkludert vil 1 cm øke årsinntekt med 6911 kroner, mens i det filtrerte datasettet vil den øke med 5054 kr. Endringer i signifikansnivå her.
 
-Endringer i logLik:
+# Robusthet
 
-Endringer i AIC:
+```{r}
+summary(lm_hoyde)
+```
+
+# Daniel, Kan du forklare t-verdiene?
+
+# Residualer i datasettet
+Nå skal vi legge residualene fra modellen vår inn i datasettet.
+```{r}
+hoyde <- hoyde_filter %>%
+  add_residuals(lm_hoyde_filter)
+summary(hoyde)
+```
+
+hoyde_begr <- hoyde_begr %>% 
+  add_residuals(lm5)
+hoyde_begr %>% 
+  head(n =10)
 
 # Konklusjon: Er det høyde som bestemmer inntekt?
+
+Ved hjelp av analysene og regresjon, med ulike variabler ser vi at får kun en forklaringsgrad på 8,2% når det gjelder variasjonen i inntekt som kan forklares av høyde/x. Dette er relativt lavt, og betyr at det er andre variabler som er vesentlig mer relevante for inntektsnivå. Vår konklusjon er at høyde ikke har noen innvirkning på inntekt.
 
 # Dette gjenstår:
 
 Se: <https://elastic-turing-41462a.netlify.app/presentations_ag/intro_econometrics/w_4c1_and_4c3>
 
-Gjøre ferdig teksten. Skal være ca 1 side, er ca 0,5 nå.
+Minst en av modellene skal inneholde interaksjon mht. variabelen sex.
 
-Minst en av modellene skal inneholde interaksjon mht. variabelen sex.**Se eksempel 7.10 i dokumentetLiten intro)]([\<https://elastic-turing-41462a.netlify.app/presentations_ag/intro_econometrics/w_4c1_and_4c3\>](https://elastic-turing-41462a.netlify.app/presentations_ag/intro_econometrics/w_4c1_and_4c3){.uri})))**
-
-**Det skal gjøres test av koeffisientene vha. linearHypothesis() fra car pakken**
+**Se eksempel 7.10 i dokumentetLiten intro)]([\<https://elastic-turing-41462a.netlify.app/presentations_ag/intro_econometrics/w_4c1_and_4c3\>](https://elastic-turing-41462a.netlify.app/presentations_ag/intro_econometrics/w_4c1_and_4c3){.uri})))**
 
 **Residualene fra endelig modell skal legges til datasettet hoyde. height_cm skal plottes mot residualenefor 'facet_grid(sex \~ factor(married, labels = c("not married," "married")))'**
 
-**Plot av samtlige observasjoner svakt i bakgrunnen kan en få til med KODE I OPPGAVETEKST**
-
-**Konklusjon Svar på spørsmålet: Er det høyde som bestemmer inntekt?**
-
 # Referanser
 
-::: {\#refs} \#jeg får ikke denne til å funke, kan du se Daniel? :::
+::: {\#refs} \#Daniel - fix refs
