@@ -10,9 +10,9 @@ lang: no-NB
 fontsize: 12pt
 linestretch: 1.5
 output:
+  pdf_document: default
   html_document:
     df_print: paged
-  pdf_document: default
   word_document: default
   html_notebook: default
 ---
@@ -120,9 +120,8 @@ Vi fjerner de mest ekstreme; utliggerne til høyre (2% høyeste lønninger) og u
 
 ```{r redusert datasett}
 library(dplyr)
-options(scipen = 999) #disabling scientific notation in R. vet ikke om vi skal ha med denne
-hoyde_filter = filter(hoyde, inntekt_nok != 0, inntekt_nok != "2922555") #brukt filter til å fjerne alle med inntekt = 0 og 2922555 (2% med høyest lønn)
-
+options(scipen = 999) 
+hoyde_filter = filter(hoyde, inntekt_nok != 0, inntekt_nok != "2922555")
 Høyde <- hoyde_filter$hoyde_cm
 Inntekt <- hoyde_filter$inntekt_nok
 ggplot(hoyde_filter, aes(Inntekt, Høyde)) +  theme_dark() +
@@ -136,7 +135,6 @@ ggplot(data = hoyde_filter,
 ```
 
 ```{r eval=TRUE}
-#options(scipen = 999) #disabling scientific notation in R. vet ikke om vi skal ha med denne
 
 Inntekt <- hoyde$inntekt_nok
 ggplot(hoyde = Inntekt) + theme_dark() +
@@ -146,7 +144,6 @@ ggplot(hoyde = Inntekt) + theme_dark() +
 Grafen over illustrerer inntekt, og her ser man ved første øyekast at det ikke er normalfordelt. Dette fordi man har mange observasjoner tilnærmet 0, og hovedvekten er \<500,000.00 NOK. I andre enden av skalaen, de med 2% høyest inntekt er illustrert ved et gjennomsnitt av lønnen. Derfor foreligger det ingen observasjoner mellom 1,600,000.00 NOK og 3,000,000.00 NOK.
 
 ```{r eval=TRUE}
-#options(scipen = 999) #disabling scientific notation in R. vet ikke om vi skal ha med denne
 
 Høyde <- hoyde$hoyde_cm
 Inntekt <- hoyde$inntekt_nok
@@ -175,7 +172,6 @@ Gjennomsnittet som er målt av de 2% med høyest lønn, er kroner 292 2555.
 I denne delen av oppgaven ser vi på variablene inntekt og høyde hver for seg. For å undersøke om det finnes noe sammenheng mellom disse, må vi putte de 2 variablene inn i samme plot.
 
 ```{r eval=TRUE}
-#options(scipen = 999) #disabling scientific notation in R. vet ikke om vi skal ha med denne
 
 Inntekt <- hoyde$inntekt_nok
 ggplot(hoyde = Inntekt) + theme_dark() +
@@ -185,7 +181,6 @@ ggplot(hoyde = Inntekt) + theme_dark() +
 Denne grafen illustrerer inntekt, og her ser man ved første øyekast at det ikke er normalfordelt. Dette fordi man har mange observasjoner tilnærmet 0, og hovedvekten er \<500,000.00 NOK. I andre enden av skalaen, de med 2% høyest inntekt er illustrert ved et gjennomsnitt av lønnen. Derfor foreligger det ingen observasjoner mellom 1,600,000.00 NOK og 3,000,000.00 NOK.
 
 ```{r eval=TRUE}
-#options(scipen = 999) #disabling scientific notation in R. vet ikke om vi skal ha med denne
 
 Høyde <- hoyde$hoyde_cm
 Inntekt <- hoyde$inntekt_nok
@@ -201,8 +196,7 @@ Vi fjerner de mest ekstreme; utliggerne til høyre (2% høyeste lønninger) og u
 
 ```{r redusert datasett}
 library(dplyr)
-options(scipen = 999) #disabling scientific notation in R. vet ikke om vi skal ha med denne
-hoyde_filter = filter(hoyde, inntekt_nok != 0, inntekt_nok != "2922555") #brukt filter til å fjerne alle med inntekt = 0 og 2922555 (2% med høyest lønn)
+hoyde_filter = filter(hoyde, inntekt_nok != 0, inntekt_nok != "2922555") 
 
 Høyde <- hoyde_filter$hoyde_cm
 Inntekt <- hoyde_filter$inntekt_nok
@@ -219,7 +213,6 @@ ggplot(data = hoyde_filter,
 # Regresjonsanalyse
 
 ```{r eval=TRUE}
-#options(scipen = 999) #disabling scientific notation in R. vet ikke om vi skal ha med denne
 Høyde <- hoyde$hoyde_cm
 Inntekt <- hoyde$inntekt_nok
 ggplot(hoyde, aes(Høyde, Inntekt)) +  theme_dark() +
@@ -246,7 +239,7 @@ Tar man bort alle som tjener 0 kroner, og de 2% som har høyest inntekt, vil vi 
 Vi skal også gjøre denne analysen av et datasett kun uten de 2% øverste inntektene, altså inkluderer vi de med inntekt på 0 kr:
 
 ```{r Semiredusert datasett}
-hoyde_semi= filter(hoyde, inntekt_nok != "2922555") #brukt filter til å fjerne alle med inntekt = 2922555 (2% med høyest lønn)
+hoyde_semi= filter(hoyde, inntekt_nok != "2922555") 
 
 (lm(inntekt_nok ~ hoyde_cm, data = hoyde_semi)) %>%
   summary()
@@ -288,6 +281,9 @@ Endringer i AIC:
 
 # Konklusjon: Er det høyde som bestemmer inntekt?
 
+Ved hjelp av analysene og regresjon, med ulike variabler. Ser vi at får kun en forklaringsgrad på 8,2% når det gjelder variasjonen i inntekt som kan forklares av x. Dette er relativt lavt. Og betyr at det er andre variabler som er vesentlig mer relevante for inntektsnivå.
+Vår konklusjon er at høyde ikke har noen innvirkning på inntekt. 
+
 # Dette gjenstår:
 
 Se: <https://elastic-turing-41462a.netlify.app/presentations_ag/intro_econometrics/w_4c1_and_4c3>
@@ -302,7 +298,6 @@ Minst en av modellene skal inneholde interaksjon mht. variabelen sex.**Se eksemp
 
 **Plot av samtlige observasjoner svakt i bakgrunnen kan en få til med KODE I OPPGAVETEKST**
 
-**Konklusjon Svar på spørsmålet: Er det høyde som bestemmer inntekt?**
 
 # Referanser
 
