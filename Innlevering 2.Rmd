@@ -66,14 +66,7 @@ knitr::kable(summary(hoyde[6:10]), "pipe")
 
 # EDA (vha. ggplot) av datasettet.
 
-```{r echo=FALSE}
-library(ggplot2) #data visualization
-library(dplyr) #data manipulation
-library(ISLR) #for the dataset
-
-ggplot(data = hoyde, aes(x = inntekt_nok, y = hoyde_cm)) + geom_point(color = "blue") + theme_dark() 
-
-```
+### Analyse med 1-variabel
 
 ```{r echo=FALSE}
 #hoyde <-   heights %>%
@@ -116,6 +109,11 @@ ggplot(hoyde = Høyde) + theme_dark() +
 ```
 Ovenfor kan sees et density plot. Det vise hovedsaklig det samme som histogrammet, men man ser enklere tettheten av observasjonene her ved en jevn og fin kurve. Her ser man igjen, en tilnærmet normalfordeling.
 
+### Analyse med 2-variabler
+
+I grafene og analysene over har vi sett på variablene inntekt og høyde hver for seg.
+For å undersøke om det finnes noe sammenheng mellom disse, må vi putte de 2 variablene inn i samme plot.
+
 ```{r eval=TRUE}
 #options(scipen = 999) #disabling scientific notation in R. vet ikke om vi skal ha med denne
 Høyde <- hoyde$hoyde_cm
@@ -124,6 +122,8 @@ ggplot(hoyde, aes(Høyde, Inntekt)) +  theme_dark() +
   geom_point(color= "blue", size = 0.5) +
 geom_smooth(formula = y ~ x, method = "lm", color= "orange")
 ```
+Øverst i grafen kan man se ulempen ved å inkludere de med 2% høyest lønn, da det blir ingen punkter/observasjoner mellom 1,600,000.00 NOK og 3,000,000.00 NOK. Det som er interessant er jo at de på toppen er representert gjennom hele høydespekteret.
+Den oransje regresjonslinjen stiger på x- og y-aksen jo høyere man kommer på høydespekteret. Men den stiger ikke nevneverdig, så det vil ikke gi sterke indisier på at høyde påvirker inntekt i særlig grad. Men man observerer jo at inntekt er økende ved stigende høyde.
 
 ```{r redusert datasett}
 library(dplyr)
@@ -134,6 +134,15 @@ ggplot(hoyde, aes(hoyde_cm, inntekt_nok)) +
 geom_smooth(formula = y ~ x, method = "lm", color = "orange") 
 ggplot(hoyde,aes(hoyde_cm))+geom_histogram(bins=15, color = "blue") + theme_dark() 
 ```
+```{r echo=FALSE}
+library(ggplot2) #data visualization
+library(dplyr) #data manipulation
+library(ISLR) #for the dataset
+
+ggplot(data = hoyde, aes(x = inntekt_nok, y = hoyde_cm)) + geom_point(color = "blue") + theme_dark() 
+
+```
+
 
 **Vi benytter hele datasettet, men vil kjøre endelig modell også mot reduserte datasett (uten 2% topp inntekt og uten inntekt 0) for å teste modellens robusthet (huskfilterfunksjonen fraTidyverse)**
 
