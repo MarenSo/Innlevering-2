@@ -89,7 +89,7 @@ hist(x,
      col = "blue")
 ```
 
-Utliggerne til høyre er der fordi det er beregnet gjennomsnittsinntekt av de to prosentene med høyest inntekt. Dette gjennomsnittet er brukt, og har erstattet alle de øverste verdiene.
+Utliggerne til høyre er der fordi det er beregnet gjennomsnittsinntekt av de to prosentene med høyest inntekt. Dette gjennomsnittet er brukt, og har erstattet alle de øverste verdiene.Vi merker oss også at histogrammet er tilnærmet normalfordelt, der de fleste observasjonene ligger mellom 160-180 cm. 
 
 Som man kan se utfra histogrammet er det med flere uten inntekt i datasettet. Det kan man også se slik:
 
@@ -106,7 +106,7 @@ Inntekt <- hoyde$inntekt_nok
 ggplot(hoyde = Inntekt) + theme_dark() +
   geom_density(aes(x = Inntekt), fill = "blue")
 ```
-
+Denne grafen illustrerer inntekt, og her ser man ved første øyekast at det ikke er normalfordelt. Dette fordi man har mange observasjoner tilnærmet 0, og hovedvekten er <500,000.00 NOK. I andre enden av skalaen, de med 2% høyest inntekt er illustrert ved et gjennomsnitt av lønnen. Derfor foreligger det ingen observasjoner mellom 1,600,000.00 NOK og 3,000,000.00 NOK. 
 
 ```{r eval=TRUE}
 Høyde <- hoyde$hoyde_cm
@@ -114,7 +114,7 @@ Inntekt <- hoyde$inntekt_nok
 ggplot(hoyde = Høyde) + theme_dark() +
   geom_density(aes(x = Høyde), fill = "blue")
 ```
-
+Ovenfor kan sees et density plot. Det vise hovedsaklig det samme som histogrammet, men man ser enklere tettheten av observasjonene her ved en jevn og fin kurve. Her ser man igjen, en tilnærmet normalfordeling.
 
 ```{r eval=TRUE}
 #options(scipen = 999) #disabling scientific notation in R. vet ikke om vi skal ha med denne
