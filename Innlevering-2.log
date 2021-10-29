@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2022/dev) (preloaded format=pdflatex 2021.10.28)  29 OCT 2021 18:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2022/dev) (preloaded format=pdflatex 2021.10.28)  29 OCT 2021 18:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -702,117 +702,119 @@ LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line
 (/Users/danielkarstad/Library/TinyTeX/texmf-dist/tex/latex/lm/ts1lmtt.fd
 File: ts1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) [2] [3]
-<Innlevering-2_files/figure-latex/unnamed-chunk-4-1.pdf, id=44, 469.755pt x 325
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 282.
+
+<Innlevering-2_files/figure-latex/unnamed-chunk-4-1.pdf, id=48, 469.755pt x 325
 .215pt>
 File: Innlevering-2_files/figure-latex/unnamed-chunk-4-1.pdf Graphic file (type
  pdf)
 <use Innlevering-2_files/figure-latex/unnamed-chunk-4-1.pdf>
 Package pdftex.def Info: Innlevering-2_files/figure-latex/unnamed-chunk-4-1.pdf
-  used on input line 285.
+  used on input line 291.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [4 <./Innlevering-2_files/figure-latex/unnamed-chunk-4-1.pdf>]
-<Innlevering-2_files/figure-latex/unnamed-chunk-6-1.pdf, id=56, 469.755pt x 325
+<Innlevering-2_files/figure-latex/unnamed-chunk-6-1.pdf, id=61, 469.755pt x 325
 .215pt>
 File: Innlevering-2_files/figure-latex/unnamed-chunk-6-1.pdf Graphic file (type
  pdf)
 <use Innlevering-2_files/figure-latex/unnamed-chunk-6-1.pdf>
 Package pdftex.def Info: Innlevering-2_files/figure-latex/unnamed-chunk-6-1.pdf
-  used on input line 313.
+  used on input line 319.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 313--320
+Underfull \hbox (badness 10000) in paragraph at lines 319--326
 [][]
  []
 
-[5 <./Innlevering-2_files/figure-latex/unnamed-chunk-6-1.pdf>]
+[5]
 <Innlevering-2_files/figure-latex/unnamed-chunk-7-1.pdf, id=66, 469.755pt x 325
 .215pt>
 File: Innlevering-2_files/figure-latex/unnamed-chunk-7-1.pdf Graphic file (type
  pdf)
 <use Innlevering-2_files/figure-latex/unnamed-chunk-7-1.pdf>
 Package pdftex.def Info: Innlevering-2_files/figure-latex/unnamed-chunk-7-1.pdf
-  used on input line 330.
+  used on input line 336.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 330--334
+Underfull \hbox (badness 10000) in paragraph at lines 336--340
 [][]
  []
 
-
-Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 336.
-
-[6 <./Innlevering-2_files/figure-latex/unnamed-chunk-7-1.pdf>]
-<Innlevering-2_files/figure-latex/unnamed-chunk-8-1.pdf, id=77, 469.755pt x 325
+[6 <./Innlevering-2_files/figure-latex/unnamed-chunk-6-1.pdf>] [7 <./Innleverin
+g-2_files/figure-latex/unnamed-chunk-7-1.pdf>]
+<Innlevering-2_files/figure-latex/unnamed-chunk-8-1.pdf, id=87, 469.755pt x 325
 .215pt>
 File: Innlevering-2_files/figure-latex/unnamed-chunk-8-1.pdf Graphic file (type
  pdf)
 <use Innlevering-2_files/figure-latex/unnamed-chunk-8-1.pdf>
 Package pdftex.def Info: Innlevering-2_files/figure-latex/unnamed-chunk-8-1.pdf
-  used on input line 353.
+  used on input line 359.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 353--362
+Underfull \hbox (badness 10000) in paragraph at lines 359--368
 [][]
  []
 
-[7 <./Innlevering-2_files/figure-latex/unnamed-chunk-8-1.pdf>]
-<Innlevering-2_files/figure-latex/redusert datasett-1.pdf, id=91, 469.755pt x 3
-25.215pt>
+[8 <./Innlevering-2_files/figure-latex/unnamed-chunk-8-1.pdf>]
+<Innlevering-2_files/figure-latex/redusert datasett-1.pdf, id=100, 469.755pt x 
+325.215pt>
 File: Innlevering-2_files/figure-latex/redusert datasett-1.pdf Graphic file (ty
 pe pdf)
 <use Innlevering-2_files/figure-latex/redusert datasett-1.pdf>
 Package pdftex.def Info: Innlevering-2_files/figure-latex/redusert datasett-1.p
-df  used on input line 374.
+df  used on input line 406.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-<Innlevering-2_files/figure-latex/redusert datasett-2.pdf, id=92, 469.755pt x 3
-25.215pt>
+[9]
+<Innlevering-2_files/figure-latex/redusert datasett-2.pdf, id=105, 469.755pt x 
+325.215pt>
 File: Innlevering-2_files/figure-latex/redusert datasett-2.pdf Graphic file (ty
 pe pdf)
 <use Innlevering-2_files/figure-latex/redusert datasett-2.pdf>
 Package pdftex.def Info: Innlevering-2_files/figure-latex/redusert datasett-2.p
-df  used on input line 382.
+df  used on input line 414.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-<Innlevering-2_files/figure-latex/unnamed-chunk-9-1.pdf, id=93, 469.755pt x 325
-.215pt>
+<Innlevering-2_files/figure-latex/unnamed-chunk-9-1.pdf, id=106, 469.755pt x 32
+5.215pt>
 File: Innlevering-2_files/figure-latex/unnamed-chunk-9-1.pdf Graphic file (type
  pdf)
 <use Innlevering-2_files/figure-latex/unnamed-chunk-9-1.pdf>
 Package pdftex.def Info: Innlevering-2_files/figure-latex/unnamed-chunk-9-1.pdf
-  used on input line 383.
+  used on input line 415.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 382--384
+Underfull \hbox (badness 10000) in paragraph at lines 414--416
 [][]
  []
 
-[8 <./Innlevering-2_files/figure-latex/redusert datasett-1.pdf>] [9 <./Innlever
-ing-2_files/figure-latex/redusert datasett-2.pdf>]
+[10 <./Innlevering-2_files/figure-latex/redusert datasett-1.pdf>] [11 <./Innlev
+ering-2_files/figure-latex/redusert datasett-2.pdf>]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 404.
+(Font)              <12> on input line 436.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 404.
+(Font)              <8> on input line 436.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 404.
+(Font)              <6> on input line 436.
 
-Underfull \hbox (badness 10000) in paragraph at lines 404--405
+Underfull \hbox (badness 10000) in paragraph at lines 436--437
 \T1/lmr/bx/n/12 mentetLiten in-tro)]([]$https : / / elastic -[] turing -[] 4146
 2a . netlify . app / presentations _
  []
 
-[10 <./Innlevering-2_files/figure-latex/unnamed-chunk-9-1.pdf>] [11] (./Innleve
+[12 <./Innlevering-2_files/figure-latex/unnamed-chunk-9-1.pdf>] [13] (./Innleve
 ring-2.aux)
 Package rerunfilecheck Info: File `Innlevering-2.out' has not changed.
-(rerunfilecheck)             Checksum: D6B96E6321251192B5C17599AB22B2C7;728.
+(rerunfilecheck)             Checksum: 0109ADB2C9052A9E4BFE6317DAFCB9DD;898.
  ) 
 Here is how much of TeX's memory you used:
- 12299 strings out of 480539
- 185289 string characters out of 5901303
- 518562 words of memory out of 5000000
- 29694 multiletter control sequences out of 15000+600000
+ 12305 strings out of 480539
+ 185371 string characters out of 5901303
+ 518610 words of memory out of 5000000
+ 29696 multiletter control sequences out of 15000+600000
  451266 words of font info for 69 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 60i,6n,66p,462b,451s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,6n,66p,462b,473s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/Users/danielkarstad/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ts1.en
 c}{/Users/danielkarstad/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc
 }</Users/danielkarstad/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.
@@ -822,10 +824,10 @@ r17.pfb></Users/danielkarstad/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/
 lmri12.pfb></Users/danielkarstad/Library/TinyTeX/texmf-dist/fonts/type1/public/
 lm/lmtt12.pfb></Users/danielkarstad/Library/TinyTeX/texmf-dist/fonts/type1/publ
 ic/lm/lmtti10.pfb>
-Output written on Innlevering-2.pdf (11 pages, 920861 bytes).
+Output written on Innlevering-2.pdf (13 pages, 923584 bytes).
 PDF statistics:
- 170 PDF objects out of 1000 (max. 8388607)
- 128 compressed objects within 2 object streams
- 23 named destinations out of 1000 (max. 500000)
- 68 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 185 PDF objects out of 1000 (max. 8388607)
+ 141 compressed objects within 2 object streams
+ 27 named destinations out of 1000 (max. 500000)
+ 76 words of extra memory for PDF output out of 10000 (max. 10000000)
 

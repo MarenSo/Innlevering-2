@@ -68,6 +68,8 @@ knitr::kable(summary(hoyde[6:10]), "pipe")
 
 ### Analyse med 1-variabel
 
+Denne delen inneholder noen grafer med 1 variabel. Dette for å se om variablene er normalfordelt.
+
 ```{r echo=FALSE}
 #hoyde <-   heights %>%
 x <- hoyde$hoyde_cm
@@ -124,6 +126,15 @@ geom_smooth(formula = y ~ x, method = "lm", color= "orange")
 ```
 Øverst i grafen kan man se ulempen ved å inkludere de med 2% høyest lønn, da det blir ingen punkter/observasjoner mellom 1,600,000.00 NOK og 3,000,000.00 NOK. Det som er interessant er jo at de på toppen er representert gjennom hele høydespekteret.
 Den oransje regresjonslinjen stiger på x- og y-aksen jo høyere man kommer på høydespekteret. Men den stiger ikke nevneverdig, så det vil ikke gi sterke indisier på at høyde påvirker inntekt i særlig grad. Men man observerer jo at inntekt er økende ved stigende høyde.
+
+```{r enkel_regresjon, echo=F}
+summary(lm(inntekt_nok ~ hoyde_cm, 
+           data = hoyde))
+
+```
+
+Denne regresjonsanalysen viser at 1cm ekstra høyde, vi gi 9,978.5 NOK ekstra i årsinntekt.
+Ved å se på R-squared, ser man også at høyde ikke har særlig innvirkning på inntekt, med en forklaringsgrad på bare 4.74%.
 
 ```{r redusert datasett}
 library(dplyr)
