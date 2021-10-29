@@ -24,6 +24,7 @@ library(knitr)
 library(tinytex) 
 library(tidyverse) 
 library(ggpubr)
+library(dplyr)
 data('heights', package = 'modelr')
 ```
 
@@ -290,15 +291,13 @@ Se: <https://elastic-turing-41462a.netlify.app/presentations_ag/intro_econometri
 
 Gjøre ferdig teksten. Skal være ca 1 side, er ca 0,5 nå.
 
-Minst en av modellene skal inneholde interaksjon mht. variabelen sex.**Se eksempel 7.10 i dokumentetLiten intro)]([<https://elastic-turing-41462a.netlify.app/presentations_ag/intro_econometrics/w_4c1_and_4c3>](https://elastic-turing-41462a.netlify.app/presentations_ag/intro_econometrics/w_4c1_and_4c3){.uri})))**
+Minst en av modellene skal inneholde interaksjon mht. variabelen sex.
 
-**Det skal gjøres test av koeffisientene vha. linearHypothesis() fra car pakken**
+**Se eksempel 7.10 i dokumentetLiten intro)]([<https://elastic-turing-41462a.netlify.app/presentations_ag/intro_econometrics/w_4c1_and_4c3>](https://elastic-turing-41462a.netlify.app/presentations_ag/intro_econometrics/w_4c1_and_4c3){.uri})))**
 
 **Residualene fra endelig modell skal legges til datasettet hoyde. height_cm skal plottes mot residualenefor 'facet_grid(sex \~ factor(married, labels = c("not married," "married")))'**
-
-**Plot av samtlige observasjoner svakt i bakgrunnen kan en få til med KODE I OPPGAVETEKST**
 
 
 # Referanser
 
-::: {\#refs} \#jeg får ikke denne til å funke, kan du se Daniel? :::
+::: {\#refs} \#Daniel - fix refs
