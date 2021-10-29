@@ -294,7 +294,7 @@ Se: <https://elastic-turing-41462a.netlify.app/presentations_ag/intro_econometri
 
 Gjøre ferdig teksten. Skal være ca 1 side, er ca 0,5 nå.
 
-Minst en av modellene skal inneholde interaksjon mht. variabelen sex.**Se eksempel 7.10 i dokumentetLiten intro)]([<https://elastic-turing-41462a.netlify.app/presentations_ag/intro_econometrics/w_4c1_and_4c3>](https://elastic-turing-41462a.netlify.app/presentations_ag/intro_econometrics/w_4c1_and_4c3){.uri})))**
+Minst en av modellene skal inneholde interaksjon mht. variabelen sex.**Se eksempel 7.10 i dokumentetLiten intro)]([\<https://elastic-turing-41462a.netlify.app/presentations_ag/intro_econometrics/w_4c1_and_4c3\>](https://elastic-turing-41462a.netlify.app/presentations_ag/intro_econometrics/w_4c1_and_4c3){.uri})))**
 
 **Det skal gjøres test av koeffisientene vha. linearHypothesis() fra car pakken**
 
