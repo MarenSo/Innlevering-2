@@ -3,16 +3,17 @@ title: Innlevering 2
 author: Innlevering 2 i Data Science 2021 - Maren Sognefest og Daniel Karstad
 Affiliation: HVL
 email: 152148@stud.hvl.no & 598289@stud.hvl.no
-bibliography: 
+bibliography: Mittbibliotek.bib
 bib-humanities: true
-nocite: 
+nocite: @National @judge @Judge2004 @Young 
+csl: apa-no-ampersand
 lang: no-NB
 fontsize: 12pt
 linestretch: 1.5
 output:
+  pdf_document: default
   html_document:
     df_print: paged
-  pdf_document: default
   word_document: default
   html_notebook: default
 ---
@@ -28,15 +29,16 @@ library(dplyr)
 data('heights', package = 'modelr')
 ```
 
+\newpage
 # Er det høyde som bestemmer inntekt?
 
-Denne artikkelen skal ta for seg om det er en, og eventuelt hvilken, sammenheng det er mellom høyde og inntekt. Ved hjelp av flere analyser, skal vi bruke datasettet *heights* (fra National Longitudinal Study) som vi finner i pakken *modelr* skal vi prøve å finne ut om det er en sammenheng. Kan det stemme at høye personer tjener mest?
+Denne artikkelen skal ta for seg om det er en, og eventuelt hvilken, sammenheng det er mellom høyde og inntekt. Ved hjelp av flere analyser, skal vi bruke datasettet *heights* (fra @National Longitudinal Study) som vi finner i pakken *modelr* skal vi prøve å finne ut om det er en sammenheng. Kan det stemme at høye personer tjener mest?
 
 I analyse-delen av artikkelen vil vi bruke ulike **plots** for å analysere spørsmålet, og komme frem til en konklusjon.
 
 ## Litteraturgjennomgang
 
-At høyde har påvirkning på karrieresuksess er ingen ny tanke, men det er gjort få studier på dette området. En av de viktigste indikatorene for suksess i arbeidslivet er lønn, og i 2004 skrev Judge og Cabel en artikkel som omhandlet hvorvidt høyde bestemmer inntekt. De nevner at utsagnet «høyde påvirker inntekten» kanskje er mer sant enn man først skulle tro. Tidligere studier har vist at høye mennesker fremstår som mer overbevisende (Young & French, 1996), mer attraktive som partnere (Freedman, 1979; Harrison & Saeed, 1977; Lerner & Moore, 1974) og fremstår mer naturlig som en lederskikkelse (Higham & Carment, 1992; Stogdill, 1948). Bakgrunnen for dette kan ligge i biologien vår og i evolusjonsteorien. I dyreverden brukes nemlig høyde som et mål på styrke i en risikovurdering i en fight-or-flight-situasjon.
+At høyde har påvirkning på karrieresuksess er ingen ny tanke, men det er gjort få studier på dette området. En av de viktigste indikatorene for suksess i arbeidslivet er lønn, og i 2004 skrev @judge og Cabel en artikkel som omhandlet hvorvidt høyde bestemmer inntekt. De nevner at utsagnet «høyde påvirker inntekten» kanskje er mer sant enn man først skulle tro. Tidligere studier har vist at høye mennesker fremstår som mer overbevisende (@Young & French, 1996), mer attraktive som partnere (Freedman, 1979; Harrison & Saeed, 1977; Lerner & Moore, 1974) og fremstår mer naturlig som en lederskikkelse (Higham & Carment, 1992; Stogdill, 1948). Bakgrunnen for dette kan ligge i biologien vår og i evolusjonsteorien. I dyreverden brukes nemlig høyde som et mål på styrke i en risikovurdering i en fight-or-flight-situasjon.
 
 Det nevnes at høyde kan gi mennesker bedre selvillit og bedre sosial selvtillit, noe som i seg selv kan være en faktor for å yte bedre - og følgelig ha høyere inntekt. Videre i artikkelen inkluderer de fire forskjellige studier. I tillegg til de to åpenbare variablene i studien (høyde og inntket), inkluderte de tre kontrollvariabler; kjønn, alder og vekt.
 
@@ -318,6 +320,14 @@ Minst en av modellene skal inneholde interaksjon mht. variabelen sex.
 
 **Residualene fra endelig modell skal legges til datasettet hoyde. height_cm skal plottes mot residualenefor 'facet_grid(sex \~ factor(married, labels = c("not married," "married")))'**
 
-# Referanser
+\newpage
+ 
+## Referanser
 
-::: {\#refs} \#Daniel - fix refs
+<div id="refs"></div>
+
+## Appendiks
+
+```{r ref.label=knitr::all_labels(), echo = T, eval = F}
+
+```
