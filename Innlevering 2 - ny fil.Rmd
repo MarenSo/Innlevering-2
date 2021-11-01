@@ -11,9 +11,9 @@ lang: no-NB
 fontsize: 12pt
 linestretch: 1.5
 output:
-  pdf_document: default
   html_document:
     df_print: paged
+  pdf_document: default
   word_document: default
   html_notebook: default
 ---
@@ -253,9 +253,10 @@ model <- lm(inntekt_nok ~ hoyde_cm + education + sex, data = hoyde_filter)
 summary(model)
 ```
 
+Her ser man umiddelbart at de som er gift har høyere inntekt, for begge kjønn. Dette er nok trolig fordi personer i et etablert ekteskap har høyere sosioøkonomisk status. Noe som er en variabel for inntekt av flere grunner, t.d utdanning, yrke etc.
+
 Inntekt = -385.258 + 1.341 * høyde + 45.968 * utdannelse (- 130.227 om du er kvinne).
 R2 er 0,2209, altså kan 22,09% av variasjonen i inntekt forklares av variablene høyde, utdannelse og kjønn.
-
 
 # Huxreg
 
@@ -291,7 +292,7 @@ De viktigste variablene i vårt datasett har vært høyde (*hoyde_cm*) og inntek
 summary(lm_hoyde)
 ```
 
-# Daniel, Kan du forklare t-verdiene?
+Her ser man også på t-verdiene at vi har en normalfordeling. Man ser at gjennomsnittsverdiene i datasettet er normalfordelt og ikke signifikant forskjellig med signifikansnivå på 0,05, De som er gift har noe høyere inntekt enn de som ikke er det. 
 
 # Residualer i datasettet
 Nå skal vi legge residualene fra modellen vår inn i datasettet.
@@ -309,16 +310,6 @@ hoyde_begr %>%
 # Konklusjon: Er det høyde som bestemmer inntekt?
 
 Ved hjelp av analysene og regresjon, med ulike variabler ser vi at får kun en forklaringsgrad på 8,2% når det gjelder variasjonen i inntekt som kan forklares av høyde/x. Dette er relativt lavt, og betyr at det er andre variabler som er vesentlig mer relevante for inntektsnivå. Vår konklusjon er at høyde ikke har noen innvirkning på inntekt.
-
-# Dette gjenstår:
-
-Se: <https://elastic-turing-41462a.netlify.app/presentations_ag/intro_econometrics/w_4c1_and_4c3>
-
-Minst en av modellene skal inneholde interaksjon mht. variabelen sex.
-
-**Se eksempel 7.10 i dokumentetLiten intro)]([\<https://elastic-turing-41462a.netlify.app/presentations_ag/intro_econometrics/w_4c1_and_4c3\>](https://elastic-turing-41462a.netlify.app/presentations_ag/intro_econometrics/w_4c1_and_4c3){.uri})))**
-
-**Residualene fra endelig modell skal legges til datasettet hoyde. height_cm skal plottes mot residualenefor 'facet_grid(sex \~ factor(married, labels = c("not married," "married")))'**
 
 \newpage
  

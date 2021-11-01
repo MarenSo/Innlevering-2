@@ -201,6 +201,8 @@ ggplot(data = hoyde_filter, mapping = aes(x = hoyde_cm, y = inntekt_nok)) +
   facet_grid(sex ~ factor(married, labels = c("not married", "married")))
 ```
 
+Her ser man umiddelbart at de som er gift har høyere inntekt, for begge kjønn. Dette er nok trolig fordi personer i et etablert ekteskap har høyere sosioøkonomisk status. Noe som er en variabel for inntekt av flere grunner, t.d utdanning, yrke etc.
+
 # Huxreg
 
 Lager to nye datasett, kalt lm_hoyde og lm_hoyde_filter. Disse er laget utfra den naturlige logaritmen til *hoyde* og *hoyde_filter*, og vil derfor inneholde andre variabler.
@@ -244,16 +246,6 @@ summary(hoyde)
 # Konklusjon: Er det høyde som bestemmer inntekt?
 
 Ved hjelp av analysene og regresjon, med ulike variabler ser vi at får kun en forklaringsgrad på 8,2% når det gjelder variasjonen i inntekt som kan forklares av høyde/x. Dette er relativt lavt, og betyr at det er andre variabler som er vesentlig mer relevante for inntektsnivå. Vår konklusjon er at høyde ikke har noen innvirkning på inntekt.
-
-# Dette gjenstår:
-
-Se: <https://elastic-turing-41462a.netlify.app/presentations_ag/intro_econometrics/w_4c1_and_4c3>
-
-Minst en av modellene skal inneholde interaksjon mht. variabelen sex.
-
-**Se eksempel 7.10 i dokumentetLiten intro)]([\<https://elastic-turing-41462a.netlify.app/presentations_ag/intro_econometrics/w_4c1_and_4c3\>](https://elastic-turing-41462a.netlify.app/presentations_ag/intro_econometrics/w_4c1_and_4c3){.uri})))**
-
-**Residualene fra endelig modell skal legges til datasettet hoyde. height_cm skal plottes mot residualenefor 'facet_grid(sex \~ factor(married, labels = c("not married," "married")))'. Tror jeg har gjort dette.**
 
 
 \newpage
