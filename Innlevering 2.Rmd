@@ -1,21 +1,8 @@
 ---
-title: Innlevering 2
-author: Innlevering 2 i Data Science 2021 - Maren Sognefest og Daniel Karstad
-Affiliation: HVL
-email: 152148@stud.hvl.no & 598289@stud.hvl.no
-bibliography: Mittbibliotek.bib
-bib-humanities: true
-nocite: @National @judge @Judge2004 @Young 
-csl: apa-no-ampersand
-lang: no-NB
-fontsize: 12pt
-linestretch: 1.5
+title: "R Notebook"
 output:
-  pdf_document: default
-  html_document: 
+  html_document:
     df_print: paged
-  word_document: default
-  html_notebook: default
 ---
 
 ```{r echo=FALSE}
@@ -50,7 +37,7 @@ Dataene til de fire studiene, ble hentet inn fra fire ulike kilder - en for hver
 
 ## Datasett
 
-```{r echo=FALSE datasett original}
+```{r  datasett original, echo=FALSE}
 knitr::kable(summary(heights[1:8]), "pipe")
 ```
 
@@ -58,7 +45,7 @@ Over er sammendraget av statistikken i det originale datasettet "heights". Man h
 
 Under har vi kopiert datasettet "heights" og kalt det "hoyde". Her har vi regnet dataen om til europeiske standarderer; vi bruker høyde i cm og vekt i kg, i tillegg til at inntekten er i norske kroner, at vi har laget en egen kolonne for BMI og at vi har laget en forenklet utgave av marital (married - not married). Det er vedlagt et sammendrag av dette under.
 
-```{r echo=TRUE datasett europeisk}
+```{r datasett europeisk,echo=TRUE}
 hoyde <-   heights %>%
 mutate(heights, hoyde_cm = height*2.54, #høyde i cm = hoyde i tommer * 2,54 fordi 1 tommer = 2,54 cm
        vekt_kg = weight/2.2, #vekt i kg = vekt i pound / 2.2 fordi 2,2 kg = 1 pound
@@ -83,7 +70,7 @@ knitr::kable(summary(hoyde[6:10]), "pipe")
 
 Under ser vi hvordan datasettet ser ut ved hjelp av punkter og et histogram. Utliggerne er der fordi det er beregnet gjennomsnittsinntekt av de to prosentene med høyest inntekt. Som nevnt, er dette et gjennomsnittet som er brukt, og har erstattet alle de øverste verdiene.
 
-```{r echo=FALSE ggplot + histogram originalt datasett}
+```{r ggplot + histogram originalt datasett, echo=FALSE}
 library(ggplot2) #data visualization
 library(dplyr) #data manipulation
 library(ISLR) #for the dataset
