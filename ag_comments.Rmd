@@ -1,0 +1,14 @@
+---
+title: "Kommentarer"
+output:
+  html_document:
+    df_print: paged
+---
+
+-   Beklager sen tilbakemelding, men har strevd litt med å få dokumentet til å kjøre. Tror det skal virke greit nå.
+-   Vær litt forsiktig med hva dere legger inn i YAML headder-en. Den er svært ømfintlig for selv den minste syntaks feil.
+-   Greide ikke reprodusere dokumentet
+-   Måtte endre navn til Innlevering_2.Rmd fra Innlevering 2.Rmd. Mellomrom er ikke tillatt i filnavn (i RMarkdown systemet) tror jeg.
+-   Måtte endre litt på noen av chunk-ene deres. Dere hadde satt navnet på chunken etter en opsjon. Korrekt er **r datasett original, echo=FALSE** ikke **r echo=FALSE datasett original**. Det siste er feil syntaks og virker ikke. Merk kommaet mellom navn og opsjoner.
+-   Dere hadde en svært avansert YAML header ;-) Jeg fikk den ikke til å kjøre og måtte forenkle litt.
+-   For ordens skyld. Assignmentet er godkjent, men ta gjerne et titt på løsningsforslaget.

@@ -1,0 +1,18 @@
+Version: 1.0
+
+RestoreWorkspace: Default
+SaveWorkspace: Default
+AlwaysSaveHistory: Default
+
+EnableCodeIndexing: Yes
+UseSpacesForTab: Yes
+NumSpacesForTab: 2
+Encoding: UTF-8
+
+RnwWeave: knitr
+LaTeX: XeLaTeX
+<<<<<<< HEAD
+=======
+
+AutoAppendNewline: Yes
+>>>>>>> a49a644fee7496ef841ebe321c72c1480f64d928
