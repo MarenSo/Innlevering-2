@@ -1,7 +1,20 @@
 ---
 title: "Innlevering 2"
 author: "Innlevering 2 i Data Science 2021 - Maren Sognefest og Daniel Karstad"
-Affiliation: HVL
+affiliation: "HVL"
+email: "152148@stud.hvl.no og 598289@stud.hvl.no"
+bibliography: Mittbibliotek.bib
+nocite: \\@Judge2004
+csl: apa-no-ampersand
+lang: no-NB
+fontsize: 12pt
+linestretch: 1.5
+output:
+  pdf_document: default
+  html_document: 
+    df_print: paged
+  word_document: default
+  html_notebook: default
 ---
 
 ```{r setup, echo=FALSE}
@@ -49,6 +62,8 @@ Dataene er begrenset til enkeltpersoner som jobber minst 20 timer i snitt ukentl
 Dataene til de fire studiene, ble hentet inn fra fire ulike kilder - en for hvert studie.
 Judge og Cabel konkluderte med at det er sammenheng mellom en persons høyde og inntekt, noe som har vært diskutert i ettertid.
 Det er dette vi skal se på nå, ved bruk av et helt annet datasett enn det som ble brukt i 2004 @Judge2004.
+
+@judge_effect_2004
 
 ## Datasett
 
@@ -260,10 +275,34 @@ Endringer i signifikansnivå her.
 Nå skal vi legge residualene fra modellen vår inn i datasettet.
 
 ```{r residualer inn i datasett}
-hoyde <- hoyde_filter %>%
-  add_residuals(lm_hoyde_filter)
-summary(hoyde)
+# Her legger dere residualene fra lm_hoyde_filter inn i hoyde
+# Tror dere mente å legge dem inn i lm_hoyde_filter
+# Ønsker å se hvor stor sammenheng det er mellom residualene og høyde når vi
+# har korrigert for andre faktorer. Kan da ikke ha høyde som variabel i modellen
+# legger derfor heller inn kjønn og utdanning (se løsning for interaksjonsmodell)
+mod_ag <- 'inntekt_nok ~ sex + education + age + vekt_kg + marital'
+lm_hoyde_filter_ag <- lm(mod_ag, data = hoyde_filter, subset = complete.cases(hoyde_filter))
+hoyde_filter_ag <- hoyde_filter %>%
+  add_residuals(lm_hoyde_filter_ag)
+#summary(hoyde)
 ```
+
+```{r plot residualer ag}
+ggplot(data = hoyde_filter_ag, mapping = aes(x = hoyde_cm, y = resid)) + 
+  facet_grid(sex ~ married) +
+  geom_point(
+    # satt under ggplot() så trengs ikke her
+    #data = hoyde_filter,
+    # trenger ikke mapping her når du har den samme i ggplot()
+    # mapping = aes(x = hoyde_cm, y = inntekt_nok), 
+    colour = "blue",
+    size = 0.2
+    ) +
+    geom_smooth(formula = 'y ~ x', method = 'lm', se = FALSE)
+```
+
+Med mod_ag er det en svak postiv sammenheng mellom høyde og inntekt.
+Se løsningsforslag for en enkel interaksjonsmodell som ser ut til å fjerne all sammenheng mellom høyde og inntekt.
 
 # Konklusjon: Er det høyde som bestemmer inntekt?
 

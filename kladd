@@ -1,0 +1,13 @@
+
+ '@judge' '@Judge2004' '@Young' 
+
+csl: apa-no-ampersand
+lang: no-NB
+fontsize: 12pt
+linestretch: 1.5
+output:
+  html_document: 
+    df_print: paged
+  pdf_document: default
+  word_document: default
+  html_notebook: default
